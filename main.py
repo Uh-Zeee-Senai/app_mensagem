@@ -31,10 +31,9 @@ def main(page: ft.Page):
 
             try:
                 #AQUI VAMOS FAZER O GET
-                
-                res = requests.get(F"{URL_BASE}?email=eq. {txt_email.value}", headers=HEADERS)
-                                
+                res = requests.get(f"{URL_BASE}?email=eq.{txt_email.value}&senha=eq.{txt_senha.value}", headers=HEADERS)
                 dados = res.json()
+                
                 
                 if res.status_code == 200 and len(dados) > 0:
                     dashboard.exibir_dashboard(page, dados[0], exibir_login)
@@ -67,10 +66,9 @@ def main(page: ft.Page):
             corpo = {"nome": txt_nome.value, "email": txt_email.value, "senha": txt_senha.value}
             try:
                 #REQUEST
-                res = requests.post(URL_BASE,json=corpo,
-                headers=HEADERS)
-                if res.status_code == 201:exibir_login()
-                
+                res = requests.post(URL_BASE, json=corpo, headers=HEADERS)
+                if res.status_code == 201:
+                    exibir_login()
                 
             except: pass
 

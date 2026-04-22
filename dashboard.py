@@ -43,8 +43,8 @@ def exibir_dashboard(page: ft.Page, aluno, voltar_login_funcao):
 
             try:
                 #REQUESTS
-                url_patch = f"{URL_BASE}?id=eq.{id.usuario}"
-                res = requests.patch(url_patch, json={"frase": txt_frase.value}, headers=HEADERS)
+                url_patch = f"{URL_BASE}?id=eq.{id_usuario}"
+                res = requests.patch(url_patch, json= {"frase": txt_frase.value}, headers=HEADERS)
                 
                 if res.status_code in [200, 204]:
                     lbl_status.value, lbl_status.color = "✅ Frase salva com sucesso!", "green"
